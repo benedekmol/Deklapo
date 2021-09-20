@@ -1,0 +1,41 @@
+defmodule Gyak1 do
+  def print do
+    IO.puts "hello"
+  end
+
+  @spec print( a::String ) :: b::String
+  def print(a) do
+    IO.puts a
+  end
+
+  @spec lnko(a :: integer, b :: integer) :: d :: integer
+  # a és b legnagyobb közös osztója d
+  def lnko(a,0) do
+    a
+  end
+  def lnko(a,b) do
+    lnko(b,rem(a,b))
+  end
+
+  @spec len(xs :: [any]) :: n :: integer
+  # Az xs lista hossza n
+  def len([]) do
+    0
+  end
+  def len(x) do
+    1 + len(tail(x))
+  end
+
+end
+
+# IO.puts Gyak1.lnko(3,9)
+IO.puts Gyak1.len([])
+IO.puts Gyak1.len(["asdf", "asdf", "asdfasdf"])
+
+
+# @spec lnko( a::integer, b::integer) :: b::integer
+# # a és b legnagyobb közös osztója d
+# def lnko(a,b), do
+
+
+# lnko(96, 42) === 6
