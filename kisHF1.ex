@@ -24,9 +24,11 @@ defmodule Khf1 do
     # sit! 14 -> {1,
     #              [{4,
     #                 [{2, 1}]}]}
-    # sit! 9 -> {2,
-    #              [{3,
-    #                 [{1, 2}, {2, 1}]}]}
+    # sit! 9 -> {2,     == hányféle variáció
+    #              [{3, == sorok száma
+    #                 [{1, 2}, {2, 1}]}]} == variánsok utolsó sor, diffi
+    @spec sit_variants( k::integer, acc::{ m::integer, ss::[setgings]}, number_of_variants::integer ) :: r::{ m::integer, ss::[ seatings ] }
+    defp sit_variants(k, acc, number_of_variants) do
 
 
 
