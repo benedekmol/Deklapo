@@ -27,9 +27,15 @@ defmodule Khf1 do
     # sit! 9 -> {2,     == hányféle variáció
     #              [{3, == sorok száma
     #                 [{1, 2}, {2, 1}]}]} == variánsok utolsó sor, diffi
-    @spec sit_variants( k::integer, acc::{ m::integer, ss::[setgings]}, number_of_variants::integer ) :: r::{ m::integer, ss::[ seatings ] }
-    defp sit_variants(k, acc, number_of_variants) do
+    def sit!(k) do
+        IO.puts "hello"
+    end
 
+    @spec sit_variants( k::integer, acc::{ m::integer, ss::[seatings]}, number_of_variants::integer ) :: r::{ m::integer, ss::[ seatings ] }
+    defp sit_variants(k, acc, number_of_variants) do
+        IO.puts "asdf"
+        {0, [{1,[]}]}
+    end
 
 
     @doc """
@@ -39,6 +45,9 @@ defmodule Khf1 do
     # A ks lista elemei azoknak a kutyafalkáknak a k számossága
     # (2 < k <= kmax), amelyek a feladatban megadott feltételekkel
     # leültethetők a képernyő elé
+    def good_flocks(kmax) do
+        IO.puts "nothing"
+    end
 
 end
 
