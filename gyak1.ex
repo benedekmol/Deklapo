@@ -4,14 +4,14 @@ defmodule Gyak1 do
     IO.puts a
   end
 
-  # @spec lnko(a :: integer, b :: integer) :: d :: integer
-  # # a és b legnagyobb közös osztója d
-  # def lnko(a,0) do
-  #   a
-  # end
-  # def lnko(a,b) do
-  #   lnko(b,rem(a,b))
-  # end
+  @spec lnko(a :: integer, b :: integer) :: d :: integer
+  # a és b legnagyobb közös osztója d
+  def lnko(a,0) do
+    a
+  end
+  def lnko(a,b) do
+    lnko(b,rem(a,b))
+  end
 
   ##----------------------------------------------------------- 1.
   @spec len(xs :: [any]) :: n :: integer

@@ -10,8 +10,8 @@ defmodule Khf1 do
   @doc """
   ...
   """
-  @type variant :: { h :: integer, d :: integer }
-  @type seatings :: { n :: integer, vs :: [ variant ] }
+  @type variant :: { h :: integer, d :: integer }  ##utolsó sor db, sorok közötti diff
+  @type seatings :: { n :: integer, vs :: [ variant ] }  ## hány soros az ülés, variáns
   @spec sit!( k :: integer ) :: r :: { m :: integer, ss :: [ seatings ] }
   # k kiskutya m-féleképpen ülhet úgy n>2 sorban, hogy a leghátsó sorban
   # h kiskutya ül, a számuk pedig soronként pontosan d-vel növekszik
@@ -26,25 +26,11 @@ defmodule Khf1 do
   #         [{2, 1}]}]}
   # sit! 9 -> {2,   == hányféle variáció
   #        [{3, == sorok száma
-  #         [{1, 2}, {2, 1}]}]} == variánsok utolsó sor, diffi
+  #         [{1, 2}, {2, 1}]}]} == variánsok utolsó sor, diffi       1 3 5
+  ############################################################################## hányszor van meg benne a diffi és utána kipótolni az utolsó sorral
   def sit!(k) do
     IO.puts "hello"
   end
-
-  @spec sit_variants( k::integer,
-        acc::{ m::integer, ss::[seatings]},
-        diff::integer,
-        iterval::integer ) :: r::{ m::integer, ss::[ seatings ] }
-  defp sit_variants(k, acc, diff, iterval) do
-
-    IO.puts "asdf"
-    {0, [{1,[]}]}
-  end
-  defp sit_helper(k::integer, diff::integer, acc::rowcount) ::
-
-
-
-
 
 
 
