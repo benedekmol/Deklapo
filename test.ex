@@ -98,15 +98,35 @@ defmodule Kaki do
     listresult = for result <- checkresult, hd(result) do
       tl(result)
     end
+    numberofvariants = length(listresult)
     # :lists.usort(listresult)
+    # listresult
     mapped = listresult
     |> Enum.group_by(fn [x, _] -> x end, &Kernel.tl/1)
     # |> Enum.reduce(%{}, &Kernel.tl/1)
     # |> Enum.map(fn [x, y] -> {y} end)
-    for eqrow <- mapped  do
-      eqrow
+    # mergelist(elem(Enum.at(mapped, 0),1)) ### variánsok
+    # elem(Enum.at(mapped,0),0) ### sorok száma
+    result = for eqrow <- mapped  do
+      { elem(eqrow,0), mergelist(elem(eqrow,1)) }
     end
+    {numberofvariants, result}
+  end
 
+  @spec mergelist(inpput::list,acc::list, length::integer):: output::list
+  def mergelist(_input, acc, 0) do
+    acc
+  end
+  def mergelist(input,acc,  k) do
+    i = []
+    output = for elem <- Enum.at(input,k-1) do
+      i ++ elem
+    end
+    mergelist(input,acc ++ output, k-1)
+  end
+  @spec mergelist(input::list):: output::list
+  def mergelist(input) do
+    mergelist(input,[],length(input))
   end
 
   # @spec test(k::integer, x::integer):: any()
@@ -115,7 +135,6 @@ defmodule Kaki do
   # end
 
 end
-
 
 # defmodule EnumHelpers do
 
@@ -138,7 +157,7 @@ end
 # Kaki.startiter(15,4)
 
 # IO.inspect Kaki.diffiter(15)
-IO.inspect Kaki.asdf(9)
+IO.inspect Kaki.asdf(5)
 
 # IO.inspect is_truthy(1)
 
