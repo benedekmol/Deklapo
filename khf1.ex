@@ -29,7 +29,6 @@ defmodule Khf1 do
     numberofvariants = length(listresult)
     mapped = listresult
     |> Enum.group_by(fn [x, _] -> x end, &Kernel.tl/1)
-    IO.inspect mapped
     result = for eqrow <- mapped  do
       { elem(eqrow,0), mergelist(elem(eqrow,1)) }
     end
