@@ -78,8 +78,6 @@ defmodule Khf2 do
 end
 
 # IO.inspect Khf2.matchymatch("./test.txt")
-
-
 # IO.inspect Khf2.readfile("./test.txt")
 # IO.inspect Khf2.szovegelo("./test.txt")
 IO.inspect Khf2.szovegelo("./khf2_s0.txt")
