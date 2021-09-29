@@ -66,7 +66,6 @@ defmodule Khf2 do
     end
   end
 
-
   @spec matchymatch(file::String):: any()
   def matchymatch(file) do
     read = File.stream!(file)
