@@ -5,13 +5,20 @@ defmodule Khf2 do
 	@date   "2021-09-29"
 	...
 	"""
-
+  @doc """
+  A maxlength segédfüggvény kiszámítja egy lista a listában adatstruktúra belső lista leghosszabb hosszát.
+  Az Enum.max_by végigiterál a listán és az anonym függvénnyel nézi az elem hosszát.
+  Végül vissaadja a leghosszabb elem hosszát.
+  """
   @spec maxlength(list::List):: i::integer
   defp maxlength(list) do
     max = Enum.max_by(list, fn x -> length(x) end)
     length(max)
   end
 
+  @doc """
+  Addnil segédfüggvény kap egy listát és egy integert paraméterül. A paraméterben megadott számnyi nil-t ad a sorhoz.
+  """
   @spec addnil(list::List, max::integer):: any()
   defp addnil(list, 0) do
     list
@@ -21,6 +28,11 @@ defmodule Khf2 do
     addnil(tmp, maxminuslength - 1 )
   end
 
+  @doc """
+  A split segédfüggvény kap egy stringet paraméterül és listát ad vissza.
+  A stringből kiszedi a tab és az újsor karaktereket. Majd felosztja bárhány whitespace karakterenként a sort a String.split függvénnyel.
+  Végül az üres elemeket kiszűri.
+  """
   @spec split(string::String):: list::List
   defp split(s) do
     withouttab = String.replace(s, "\t", "")
@@ -32,6 +44,14 @@ defmodule Khf2 do
     end
   end
 
+  @doc """
+  Szovegelo függvény beolvassa a file-t úgy, hogy soronként ellenőrzi üres-e a sor tehát ha csak whitespace
+  tab vagy egy újsor karakter van a sorban akkor azt nem olvassa be a listoflines változóba.
+  Ha üres a listoflines akkor visszaad egy üres tömböt.
+  Ha nem üres akkor meghívja minden elemére a split függvényt.
+  Kiszámítja a leghosszabb elem hosszúságát a maxlength segédfüggvénnyel.
+  Végül soronként minden sorra ami rövidebb mint a max meghívja rá az addnil függvényt, ami kipótolja a szükséges nil-ekkel a sort.
+  """
 	@spec szovegelo(file :: String.t) :: rss:: [[String.t | nil]]
 	# A file fájl tartalmából előállítja az rss szövegmátrixot.
 	# A beolvasott szöveg és a szövegmátrix sorainak száma azonos.
@@ -65,21 +85,11 @@ defmodule Khf2 do
       result
     end
   end
-
-  @spec matchymatch(file::String):: any()
-  def matchymatch(file) do
-    read = File.stream!(file)
-    # listoflines = for line <- read, line != "\n" do
-    listoflines = for line <- read, !String.match?(line, ~r/^[\ \t\n]*\n$/) do
-      IO.puts "Line: "
-      IO.inspect line
-    end
-  end
 end
 
 # IO.inspect Khf2.matchymatch("./test.txt")
 # IO.inspect Khf2.readfile("./test.txt")
 # IO.inspect Khf2.szovegelo("./test.txt")
-IO.inspect Khf2.szovegelo("./khf2_s0.txt")
+# IO.inspect Khf2.szovegelo("./khf2_t3.txt")
 # IO.inspect Khf2.split("éalskjfd  asédlfkj jfjfjf\n")
 # IO.inspect Khf2.addnil(["a","b","c"],5)
