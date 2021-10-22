@@ -82,6 +82,7 @@ satrak_mx(NM, Fs, Ss, Mx) :-
 
 sorepito(M, RowI, 0, Tmp, ResultArr, Row).
 
+%TODO ha eleme RowI,I a ResultArr-nak akkor 1 ha nem akkor 0
 sorepito(M, RowI, I, Tmp, ResultArr, Row) :-
   I =< M,
   I > 0,
